@@ -14,16 +14,20 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
-      - name: Install latest npm version
+          cache: yarn
+
+      - name: Install latest yarn version
         run: npm install -g yarn@latest
-      - name: Install dependencies and build
+
+      - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Publish package
         run: yarn publish
         env:
@@ -38,6 +42,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Create Release
         run: gh release create ${{ github.ref }} --generate-notes
         env:

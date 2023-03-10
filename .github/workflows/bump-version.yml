@@ -33,23 +33,27 @@ jobs:
       # run that runs on: tag. (Using the GitHub token would
       # not run the workflow to prevent infinite recursion.)
       - name: Check out source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'npm'
+          node-version: 18
+          cache: yarn
 
-      - name: Install npm packages
-        run: npm ci
+      - name: Install latest yarn version
+        run: npm install -g yarn@latest
+
+      - name: Install dependencies and build
+        run: yarn install --frozen-lockfile
 
       - name: Setup Git
         run: |
           git config user.name 'Luiz Cristino'
           git config user.email 'luiz.paulo.cristino@gmail.com'
+
       - name: bump version
         run: npm version ${{ github.event.inputs.version }}
 
