@@ -41,13 +41,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'yarn'
+          cache: npm
 
-      - name: Install latest yarn version
-        run: npm install -g yarn@latest
+      - name: Install latest npm version
+        run: npm install -g npm@latest
 
       - name: Install dependencies and build
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Setup Git
         run: |
@@ -55,7 +55,7 @@ jobs:
           git config user.email 'luiz.paulo.cristino@gmail.com'
 
       - name: bump version
-        run: yarn version --${{ github.event.inputs.version }}
+        run: npm version --${{ github.event.inputs.version }}
 
       - name: Push latest version
         run: git push origin main --follow-tags
