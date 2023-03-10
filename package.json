@@ -1,5 +1,5 @@
 {
-  "name": "pagination",
+  "name": "@underwork/pagination",
   "version": "1.0.2",
   "description": "",
   "main": "/lib/pagination.js",
