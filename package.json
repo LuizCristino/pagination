@@ -22,12 +22,20 @@
     "release:patch": "standard-version --release-as patch",
     "release:major": "standard-version --release-as major"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "pagination",
+    "javascript"
+  ],
   "author": "Luiz Paulo Cristino, <luiz.paulo.cristino@gmail.com>",
   "license": "MIT",
   "files": [
     "lib/**/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizCristino/pagination.git"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

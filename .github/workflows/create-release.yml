@@ -19,13 +19,13 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
-          cache: npm
+          cache: 'yarn'
       - name: Install latest npm version
-        run: npm install -g npm@latest
+        run: npm install -g yarn@latest
       - name: Install dependencies and build
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Publish package
-        run: npm publish --provenance
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
