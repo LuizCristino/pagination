@@ -17,7 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -25,10 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-       - name: Install latest yarn version
-        run: npm install -g yarn@latest
-
-      - name: Install dependencies and build
+      - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
       - name: Test
