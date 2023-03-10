@@ -55,7 +55,7 @@ jobs:
           git config user.email 'luiz.paulo.cristino@gmail.com'
 
       - name: bump version
-        run: yarn version ${{ github.event.inputs.version }}
+        run: yarn version --${{ github.event.inputs.version }}
 
       - name: Push latest version
         run: git push origin main --follow-tags
